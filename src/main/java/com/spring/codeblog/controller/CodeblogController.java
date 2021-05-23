@@ -16,11 +16,11 @@ public class CodeblogController {
     @Autowired
     CodeblogService codeblogService;
 
-    @RequestMapping(value = "posts", method = RequestMethod.GET)
+    @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public ModelAndView getPosts(){
         ModelAndView mv = new ModelAndView("posts");
         List<Post> posts = codeblogService.findAll();
-        mv.addObject("posts" , posts);
+        mv.addObject("posts", posts);
         return mv;
     }
 }
