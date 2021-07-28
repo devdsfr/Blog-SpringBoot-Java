@@ -4,7 +4,9 @@
 <head>
 
     <title>MyCodeBlog</title>
-    <!--CSS-->
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
 </head>
@@ -24,21 +26,19 @@
                 </ol>
             </nav>
 
-            <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="post : ${posts}" >
+            <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="post : ${posts}">
                 <div class="card-body">
                     <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
                         <span th:text="${post.autor}"></span>
                         <span th:text="${post.data}"></span>
                     </p>
-
-                    <a th:href="${(#mvc.url('CC#getPostDetails').arg(0, post.id)).build()}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${post.titulo}"></span></h4></a>
-
-                    <p class="card-text"><span th:text="${#strings.abbreviate(post.texto,400)}"></span></p>
+                    <a th:href="${(#mvc.url('BC#getPostDetails').arg(0, post.id)).build()}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${post.titulo}"></span></h4></a>
+                    <p class="card-text"><span th:utext="${#strings.abbreviate(post.texto,400)}"></span></p>
+                    <!--<a th:href="${(#mvc.url('BC#getPostDetails').arg(0, post.id)).build()}" class="card-link">Acessar</a>-->
                 </div>
             </div>
-
        </div>
-
     </section>
+
 </body>
 </html>
