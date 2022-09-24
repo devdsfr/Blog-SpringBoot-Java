@@ -1,16 +1,13 @@
 package com.spring.codeblog.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
-
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name="TB_POST")
-
 public class Post {
 
     @Id
@@ -23,12 +20,13 @@ public class Post {
     @NotNull
     private String autor;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-mm-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
     private LocalDate data;
 
     @NotNull
     @Lob
     private String texto;
+
 
     public Long getId() {
         return id;
@@ -69,4 +67,6 @@ public class Post {
     public void setTexto(String texto) {
         this.texto = texto;
     }
+
+
 }
