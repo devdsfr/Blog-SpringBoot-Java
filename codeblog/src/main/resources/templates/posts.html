@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <title>MyCodeBlog</title>
     <!--CSS-->
@@ -26,9 +27,18 @@
                 </ol>
             </nav>
 
-            <div class="card">
+            <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="post : ${posts}">
                 <div class="card-body">
-                    This is some text within a card body.
+                    <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
+                        <span th:text="${post.autor}"></span>
+                        <span th:text="${post.data}"></span>
+
+                    </p>
+
+                    <a th:href="${(#mvc.url('CC#getPostDetails').arg(0, post.id)).build()}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${post.titulo}"></span></h4></a>
+
+                    <p class="card-text"><span th:utext="${#strings.abbreviate(post.texto,400)} "></span></p>
+
                 </div>
             </div>
         </div>
